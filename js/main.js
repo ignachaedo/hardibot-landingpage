@@ -17,7 +17,6 @@
       this.setAttribute('aria-expanded', isOpen);
     });
 
-    // Close menu on link click
     navLinks.forEach(function (link) {
       link.addEventListener('click', function () {
         navMenu.classList.remove('open');
@@ -26,7 +25,6 @@
       });
     });
 
-    // Close menu on outside click
     document.addEventListener('click', function (e) {
       if (!toggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('open');
@@ -38,16 +36,14 @@
 
   /* ---------- Scroll Fade-in ---------- */
   function observeFadeIn() {
-    const els = document.querySelectorAll('.feature-card, .persona-card, .business-card, .tech-stat, .contact-card');
+    const els = document.querySelectorAll('.feature-card, .persona-card, .business-card, .tech-stat');
 
     if (!('IntersectionObserver' in window)) {
       els.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
       return;
     }
 
-    els.forEach(function (el) {
-      el.classList.add('fade-in');
-    });
+    els.forEach(function (el) { el.classList.add('fade-in'); });
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -56,10 +52,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
-    });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
 
     els.forEach(function (el) { observer.observe(el); });
   }
@@ -70,11 +63,7 @@
   var navbar = document.getElementById('navbar');
 
   window.addEventListener('scroll', function () {
-    if (window.scrollY > 10) {
-      navbar.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.15)';
-    } else {
-      navbar.style.boxShadow = 'none';
-    }
+    navbar.style.boxShadow = window.scrollY > 10 ? '0 2px 12px rgba(0, 0, 0, 0.15)' : 'none';
   }, { passive: true });
 
 })();
