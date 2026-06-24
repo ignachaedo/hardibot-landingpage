@@ -537,6 +537,28 @@ ul { list-style: none; }
   font-weight: 500;
 }
 
+.contact-qr-img-wrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 6px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(249, 115, 22, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-qr-img-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.15);
+}
+
+.contact-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .contact-team {
   text-align: right;
   padding: 20px 0;
